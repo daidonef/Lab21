@@ -3,34 +3,42 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>EnrollInDojo</title>
+<link rel="stylesheet" type="text/css" href="dojolayout.css">
 </head>
 <body>
+<div>
 <h1>Enrollment Form</h1>
 <form name="form1" action="../enroll" method="post"
 onsubmit="return validateForm()" method="post">
 
 First Name: <input type="text" name="firstname">
 <br>Last Name: <input type="text" name="lastname">
+<br>password: <input type="password" name="password">
 <br>Email: <input type="text" name="email">
-<br><br>Class: <br>Judo<input type="radio" name="dojo" value="Judo">
+<br><h2>Class: </h2>Judo<input type="radio" name="dojo" value="Judo">
 <br>Brazilian Jiu-Jitsu<input type="radio" name="dojo" value="Brazilian Jiu-Jitsu">
 <br>Taekwondo<input type="radio" name="dojo" value="Taekwondo">
 <br>Muay Thai<input type="radio" name="dojo" value="Muay Thai">
-<br><input type="submit" value="click me!">
-
+<br><h2>Class Taken: </h2>Judo<input type="checkbox" name="passdojo" value="Judo">
+<br>Brazilian Jiu-Jitsu<input type="checkbox" name="passdojo" value="Brazilian Jiu-Jitsu">
+<br>Taekwondo<input type="checkbox" name="passdojo" value="Taekwondo">
+<br>Muay Thai<input type="checkbox" name="passdojo" value="Muay Thai">
+<br><br><input type="submit" value="submit">
 </form>
+</div>
 <script>
 function validateForm() {
 	
 	var x = document.forms["form1"]["firstname"].value;
-    if (x == "") {
-        alert("First Name must be filled out");
+	var y = document.forms["form1"]["lastname"].value;
+    if (x == "" || y == "") {
+        alert("First and last name must be filled out");
         return false;
     }
     
-    x = document.forms["form1"]["lastname"].value;
+    x = document.forms["form1"]["password"].value;
     if (x == "") {
-        alert("Last Name must be filled out");
+        alert("You need a password");
         return false;
     }
     
@@ -61,6 +69,7 @@ function validateRadio (radios)
     }
     return false;
 }
+
 </script>
 
 </body>
