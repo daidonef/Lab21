@@ -51,9 +51,9 @@ public class HomeController {
 	
 	public static void database () throws ClassNotFoundException, SQLException{
 		
-		String url = "jdbc:mysql://127.0.0.1:3306/dojo";
-		String username = "root";
-		String password = "Frank452389";
+		String url = Information.gettingURL();
+		String username = Information.gettingUsername();
+		String password = Information.gettingPassword();
 		String query = gettingQuery();
 		
 		Class.forName("com.mysql.jdbc.Driver");
