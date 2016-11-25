@@ -55,6 +55,14 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/owner", method = RequestMethod.POST)
+	public String ownerinfo(Model model, HttpServletRequest request) {
+		
+		model.addAttribute("ownername", request.getAttribute("ownername"));
+		
+		return "ownerinfo";
+	}
+	
 	public static void database (String str1, String pass) throws ClassNotFoundException, SQLException{
 		
 		String url = Information.gettingURL();

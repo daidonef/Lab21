@@ -26,6 +26,19 @@ First Name: <input type="text" name="firstname">
 <br>Muay Thai<input type="checkbox" name="passdojo" value="Muay Thai">
 <br><br><input type="submit" value="submit">
 </form>
+
+<br><br>
+
+<form name="owner" action="../owner" method="post"
+onsubmit="validateOwner()" method="post">
+
+Ownername: <input type="text" name="ownername">
+<br>Password: <input type="password" name="passwordowner">
+<br><br><input type="submit" value="submit">
+
+</form>
+
+
 </div>
 <script>
 function validateForm() {
@@ -33,7 +46,7 @@ function validateForm() {
 	var x = document.forms["form1"]["firstname"].value;
 	var y = document.forms["form1"]["lastname"].value;
 	var z = document.forms["form1"]["username1"].value;
-    if (x == "" || y == "") {
+    if (x == "" || y == "" || z === "") {
         alert("First name, last name, and username must be filled out");
         return false;
     }
@@ -70,6 +83,19 @@ function validateRadio (radios)
         if (radios [i].checked) return true;
     }
     return false;
+}
+
+function validateOwner() {
+	
+	var x = document.forms["owner"]["ownername"].value;
+	var y = document.forms["owner"]["passwordowner"].value;
+	
+	if (x === "kungfupanda" && y === "DragonMaster47") {
+	} else {
+		alert("Entered wrong username and password!")
+		return false;
+	}
+	
 }
 
 </script>
