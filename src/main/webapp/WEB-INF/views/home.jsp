@@ -13,6 +13,8 @@
 
 <p>Your first name: ${firstname}</p>
 <p>Your last name: ${lastname}</p>
+<p>Your full name: ${fullname}</p>
+<p>Your username: ${username1}</p>
 <p>Your email: ${email}</p>
 <p>Your Class: ${dojo}</p>
 <p>Classes you have Taken: 

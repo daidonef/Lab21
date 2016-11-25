@@ -32,14 +32,20 @@ public class HomeController {
 	@RequestMapping(value = "/enroll", method = RequestMethod.POST)
 	public String home(Model model, HttpServletRequest request) {
 		
+		String fullname = request.getParameter("lastname") + ", " + request.getParameter("firstname");
+		String username1 = request.getParameter("username1");
+		String pass1 = request.getParameter("password");
+		
 		model.addAttribute("firstname", request.getParameter("firstname"));
 		model.addAttribute("lastname", request.getParameter("lastname"));
+		model.addAttribute("fullname", fullname);
+		model.addAttribute("username1", username1);
 		model.addAttribute("email", request.getParameter("email"));
 		model.addAttribute("dojo", request.getParameter("dojo"));
 		model.addAttribute("passdojo", request.getParameterValues("passdojo"));
 		
 		try {
-			database();
+			database(username1, pass1);
 		} catch (ClassNotFoundException e) {
 			System.out.println(e);
 		} catch (SQLException e) {
@@ -49,12 +55,12 @@ public class HomeController {
 		return "home";
 	}
 	
-	public static void database () throws ClassNotFoundException, SQLException{
+	public static void database (String str1, String pass) throws ClassNotFoundException, SQLException{
 		
 		String url = Information.gettingURL();
 		String username = Information.gettingUsername();
 		String password = Information.gettingPassword();
-		String query = gettingQuery();
+		String query = gettingQuery(str1, pass);
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		
@@ -62,21 +68,17 @@ public class HomeController {
 		
 		Statement st = con.createStatement();
 		
-		ResultSet rs = st.executeQuery(query);
+		st.executeUpdate(query);
 		
 		st.close();
 		con.close();
 		
 	}
 	
-	public static String gettingQuery(){
-		
-		String name = "tank";
-		String password = "Frank";
-		
+	public static String gettingQuery(String name, String password){
 		
 		String str1 = "insert into students(username, password)" + 
-				"values (\"" + name + ", " + password + ")\"";
+				"values (\"" + name + "\", \"" + password + "\")";
 		
 		return str1;
 	}
