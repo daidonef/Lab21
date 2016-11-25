@@ -13,5 +13,20 @@ public class Information {
  	public static String gettingPassword () {
  		return "Frank452389";
  	}
+ 	
+	public static String gettingQuery(String name, String password){
+		
+		String str1 = "insert into dojo.students(username, password)" + 
+				"values (\"" + name + "\", \"" + password + "\")";
+		
+		return str1;
+	}
+	
+	public static String gettingQuery2(String name){
+		
+		String str1 = "select * from dojo.students where username=\"" + name + "\"";
+		
+		return str1;
+	}
 
 }

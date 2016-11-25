@@ -58,9 +58,29 @@ public class HomeController {
 	@RequestMapping(value = "/owner", method = RequestMethod.POST)
 	public String ownerinfo(Model model, HttpServletRequest request) {
 		
-		model.addAttribute("ownername", request.getAttribute("ownername"));
+		model.addAttribute("ownername", request.getParameter("ownername"));
 		
 		return "ownerinfo";
+	}
+	
+	@RequestMapping(value = "/student", method = RequestMethod.POST)
+	public String studentinfo(Model model, HttpServletRequest request) {
+		
+		String student = request.getParameter("studentuser");
+		String studentInfo = "";
+		
+		try {
+			studentInfo = database2(student);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		
+		model.addAttribute("student", student);
+		model.addAttribute("info", studentInfo);
+		
+		return "studentinfo";
 	}
 	
 	public static void database (String str1, String pass) throws ClassNotFoundException, SQLException{
@@ -68,7 +88,7 @@ public class HomeController {
 		String url = Information.gettingURL();
 		String username = Information.gettingUsername();
 		String password = Information.gettingPassword();
-		String query = gettingQuery(str1, pass);
+		String query = Information.gettingQuery(str1, pass);
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		
@@ -83,12 +103,32 @@ public class HomeController {
 		
 	}
 	
-	public static String gettingQuery(String name, String password){
+	public static String database2 (String str1) throws ClassNotFoundException, SQLException {
+		String url = "jdbc:mysql://127.0.0.1:3306/movies";
+		String username = "root";
+		String password = "Frank452389";
+		String query = Information.gettingQuery2(str1);
 		
-		String str1 = "insert into students(username, password)" + 
-				"values (\"" + name + "\", \"" + password + "\")";
+		Class.forName("com.mysql.jdbc.Driver");
 		
-		return str1;
+		Connection con = DriverManager.getConnection(url, username, password);
+		
+		Statement st = con.createStatement();
+		
+		ResultSet rs = st.executeQuery(query);
+		
+		rs.next();
+		
+		String name = rs.getString("username");
+		String pass = rs.getString("password");
+		
+		String str2 = name + " " + pass;
+		
+		st.close();
+		con.close();
+		
+		return str2;
+
 	}
 	
 }

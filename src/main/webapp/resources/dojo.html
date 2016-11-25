@@ -28,9 +28,9 @@ First Name: <input type="text" name="firstname">
 </form>
 
 <br><br>
-
+<h2>For Owner</h2>
 <form name="owner" action="../owner" method="post"
-onsubmit="validateOwner()" method="post">
+onsubmit="return validateOwner()" method="post">
 
 Ownername: <input type="text" name="ownername">
 <br>Password: <input type="password" name="passwordowner">
@@ -91,8 +91,9 @@ function validateOwner() {
 	var y = document.forms["owner"]["passwordowner"].value;
 	
 	if (x === "kungfupanda" && y === "DragonMaster47") {
+		return true;
 	} else {
-		alert("Entered wrong username and password!")
+		alert("Entered wrong username and password!");
 		return false;
 	}
 	

@@ -6,10 +6,34 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="resources/homelooks.css">
 </head>
 <body>
+<h1>Input Student Username</h1>
+<form name="studentinfo" action="student" method="post"
+onsubmit="return validateStudent()" method="post">
+
+Student username: <input type="text" name="studentuser">
+<br><br><input type="submit" value="submit">
+
+</form>
+
 <p>
-Hello World!
+<br><br><br><br><br><br><br>
 </p>
+<script>
+
+function validateStudent() {
+	
+	x = document.forms["studentinfo"]["studentuser"].value;
+	if (x == "") {
+        alert("You need to input a student's username");
+        return false;
+    }
+   
+}
+
+</script>
+
 </body>
 </html>
