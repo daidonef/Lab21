@@ -14,9 +14,9 @@
 <p>Student username and password: ${info}</p>
 <p>
 <br><br><br><br><br><br><br>
-<button type="button" action="../owner" method="post">
-Back to Get Other Student's Info
-</button>
+<form name="back" action="owner" method="post" method="post">
+<input type="submit" value="Back to Get Other Student's Info">
+</form>
 </p>
 </body>
 </html>
