@@ -41,6 +41,7 @@ public class HomeController {
 		model.addAttribute("fullname", fullname);
 		model.addAttribute("username1", username1);
 		model.addAttribute("email", request.getParameter("email"));
+		model.addAttribute("zipcode", request.getParameter("zipcode"));
 		model.addAttribute("dojo", request.getParameter("dojo"));
 		model.addAttribute("passdojo", request.getParameterValues("passdojo"));
 		

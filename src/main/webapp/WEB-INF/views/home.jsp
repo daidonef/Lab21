@@ -16,6 +16,7 @@
 <p>Your full name: ${fullname}</p>
 <p>Your username: ${username1}</p>
 <p>Your email: ${email}</p>
+<p>Your zip code: ${zipcode}</p>
 <p>Your Class: ${dojo}</p>
 <p>Classes you have Taken: 
 <ul>

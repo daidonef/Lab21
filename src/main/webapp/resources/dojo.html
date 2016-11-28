@@ -16,6 +16,7 @@ First Name: <input type="text" name="firstname">
 <br>Username: <input type="text" name="username1">
 <br>password: <input type="password" name="password">
 <br>Email: <input type="text" name="email">
+<br>Zip Code: <input type="text" name="zipcode">
 <br><h2>Class: </h2>Judo<input type="radio" name="dojo" value="Judo">
 <br>Brazilian Jiu-Jitsu<input type="radio" name="dojo" value="Brazilian Jiu-Jitsu">
 <br>Taekwondo<input type="radio" name="dojo" value="Taekwondo">
@@ -46,15 +47,22 @@ function validateForm() {
 	var x = document.forms["form1"]["firstname"].value;
 	var y = document.forms["form1"]["lastname"].value;
 	var z = document.forms["form1"]["username1"].value;
-    if (x == "" || y == "" || z === "") {
+    if (x === "" || y === "" || z === "") {
         alert("First name, last name, and username must be filled out");
         return false;
     }
     
     x = document.forms["form1"]["password"].value;
-    if (x == "") {
+    if (x === "") {
         alert("You need a password");
         return false;
+    }
+    
+    var a = document.forms["form1"]["zipcode"].value;
+    if (/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(a)) {
+    } else {
+    	alert("You need a zipcode");
+    	return false;
     }
     
     x = document.forms["form1"]["email"].value;
